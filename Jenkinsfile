@@ -12,7 +12,8 @@ pipeline {
      stage('Docker run') {
        agent any 
       steps {
-       sh 'docker run --name cowsay hezidev/cowsay-daniel:1.1'
+       sh 'docker run -d --name cowsay hezidev/cowsay-daniel:1.1'
+       sh 'curl http://localhost:8080'
       }
     }  
  }
