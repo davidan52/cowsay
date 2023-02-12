@@ -12,10 +12,15 @@ pipeline {
      stage('Docker run') {
        agent any 
       steps {
-       sh 'docker run -d --name cowsay hezidev/cowsay-daniel:1.1'
+       sh 'docker run -d --name cowsayDaniel hezidev/cowsay-daniel:1.1'
        sh 'curl http://localhost:8080'
       }
     }  
  }
+ post {
+       always {
+       sh 'docker rm -f cowsayDaniel || true'
+      }
+   }
 }
 
