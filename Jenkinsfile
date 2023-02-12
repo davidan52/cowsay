@@ -8,6 +8,7 @@ pipeline {
        steps {
       	sh 'docker build -t hezidev/cowsay-daniel:1.1 .'
 	}
+}
      stage('Docker run') {
        agent any 
       steps {
@@ -15,6 +16,5 @@ pipeline {
       }
     }  
  }
-}
-}
+
 
