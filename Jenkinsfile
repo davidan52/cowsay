@@ -11,8 +11,10 @@ pipeline {
      stage('Docker run') {
        agent any 
       steps {
-       sh 'docker run --name cowsay hezidev/cowsay-daniel:1.1
+       sh 'docker run --name cowsay hezidev/cowsay-daniel:1.1'
       }
     }  
  }
+}
+}
 
