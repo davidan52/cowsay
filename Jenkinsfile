@@ -16,7 +16,7 @@ pipeline {
 }
  post {
        always {
-       sh 'docker rm -f cowsayDaniel || true'
+	sh 'docker images'
       }
    }
 }
