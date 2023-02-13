@@ -5,14 +5,14 @@ pipeline {
   stages {
      stage('Docker Build') {
        steps {
-      	sh 'docker build -t cowsay-daniel:1.1 .'
-	sh 'docker tag cowsay-daniel:1.1 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay-daniel:1.1'
+      	sh 'docker build -t cowsay:daniel.1 .'
+	sh 'docker tag cowsay:daniel.1 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay:daniel.1'
 	}
 }
     stage('Docker login') {
       steps {
 	withAWS(credentials: 'daniel-aws', region: 'eu-west-1'){
-	sh 'docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay-daniel:1.1'
+	sh 'docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay:daniel.1'
 
     }  
 }
@@ -20,7 +20,7 @@ pipeline {
 }
  post {
        always {
-	sh 'docker images | grep cowsay-daniel'
+	sh 'echo done '
       }
    }
 }
