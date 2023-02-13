@@ -10,7 +10,7 @@ pipeline {
 }
     stage('Docker Push') { 
 	steps {
-	sh 'docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay:daniela'  
+	sh 'docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay-daniel:1.1'  
     }  
 }
 }
