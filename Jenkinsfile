@@ -13,10 +13,12 @@ pipeline {
 	sh 'docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay:daniela'  
     }  
 }
+}
  post {
        always {
        sh 'docker rm -f cowsayDaniel || true'
       }
    }
 }
+
 
