@@ -11,10 +11,11 @@ pipeline {
 }
     stage('Docker login') {
       steps {
-	withAWS(credentials: 'daniel-aws', region: 'eu-west-1')
+	withAWS(credentials: 'daniel-aws', region: 'eu-west-1'){
 	sh 'docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay-daniel:1.1'
 
     }  
+}
 }
 }
  post {
