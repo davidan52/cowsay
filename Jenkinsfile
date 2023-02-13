@@ -5,7 +5,7 @@ pipeline {
   stages {
      stage('Docker Build') {
        steps {
-      	sh 'docker build -t hezidev/cowsay-daniel:1.1 .'
+      	sh 'docker build -t cowsay-daniel:1.1 .'
 	}
 }
     stage('Docker Push') { 
@@ -16,7 +16,7 @@ pipeline {
 }
  post {
        always {
-	sh 'docker images'
+	sh 'docker images | grep cowsay-daniel'
       }
    }
 }
