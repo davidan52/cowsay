@@ -27,7 +27,7 @@ pipeline {
 		    env.PORT = 80
                     }
 		 if (env.BRANCH_NAME == 'staging'){
-		    echo 'Hello from staging branch
+		    echo 'Hello from staging branch'
 		    env.PORT = 3000
 		    }
 		 else {
