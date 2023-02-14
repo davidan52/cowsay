@@ -31,7 +31,7 @@ pipeline {
 }
     stage('Tsting'){
      steps {
-	sh 'curl http://52.49.196.207:3001'
+	sh 'curl http://52.49.196.207:3010'
 }
 }
 }
