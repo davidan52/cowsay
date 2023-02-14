@@ -21,9 +21,23 @@ pipeline {
 }
     stage('Deploy'){
      steps {
+	script {
+		 if (env.BRANCH_NAME == 'main') {
+                    echo 'Hello from main branch'
+		    env.PORT = 80
+                    }
+		 if (env.BRANCH_NAME == 'staging'){
+		    echo 'Hello from staging branch
+		    env.PORT = 3000
+		    }
+		 else {
+		    echo 'Hello from feature branch'
+		    Utils.markStageSkippedForConditional('Deploy')
+		} 
+	}
 	withCredentials([file(credentialsId: 'daniel-pem', variable: 'FILE')]){
 		sh 'scp -i $FILE -o StrictHostKeyChecking=no ./cowsay-run.sh ubuntu@52.49.196.207:'
-		sh 'ssh -i $FILE -o StrictHostKeyChecking=no ubuntu@52.49.196.207 ./cowsay-run.sh'
+		sh 'ssh -i $FILE -o StrictHostKeyChecking=no ubuntu@52.49.196.207 "export PORT=${PORT}; ./cowsay-run.sh"'
           
 }
 }
