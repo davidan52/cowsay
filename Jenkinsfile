@@ -22,7 +22,7 @@ pipeline {
 	withCredentials([file(credentialsId: 'daniel-pem', variable: 'FILE')]){
 		sh 'ssh -i $FILE -o StrictHostKeyChecking=no ubuntu@52.49.196.207'
 		sh 'aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 644435390668.dkr.ecr.eu-west-1.amazonaws.com'
-		sh 'docker run -d -p 8080:8080 --name cowsay --rm 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay:daniel.1'
+		sh 'docker run -d -p 3001:8080 --name cowsay --rm 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay:daniel.1'
 		sh 'sleep 10'
                 sh 'docker ps'  
        
@@ -31,7 +31,7 @@ pipeline {
 }
     stage('Tsting'){
      steps {
-	sh 'curl http://52.49.196.207:8080'
+	sh 'curl http://52.49.196.207:3001'
 }
 }
 }
