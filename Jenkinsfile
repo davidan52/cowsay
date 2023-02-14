@@ -24,10 +24,7 @@ pipeline {
 	withCredentials([file(credentialsId: 'daniel-pem', variable: 'FILE')]){
 		sh 'scp -i $FILE -o StrictHostKeyChecking=no ./cowsay-run.sh ubuntu@52.49.196.207:'
 		sh 'ssh -i $FILE -o StrictHostKeyChecking=no ubuntu@52.49.196.207 ./cowsay-run.sh'
-
-		
-	
-                
+          
 }
 }
 }
@@ -39,6 +36,7 @@ pipeline {
 }
  post {
        always {
+	sh 'ssh -i a4bf76e.pem -o StrictHostKeyChecking=no ubuntu@52.49.196.207 command docker stop cowsay-daniel' 
 	sh 'echo done '
       }
    }
