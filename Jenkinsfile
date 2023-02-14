@@ -24,10 +24,14 @@ pipeline {
 		sh 'aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 644435390668.dkr.ecr.eu-west-1.amazonaws.com'
 		sh 'docker run -d -p 8080:8080 --name cowsay --rm 644435390668.dkr.ecr.eu-west-1.amazonaws.com/cowsay:daniel.1'
 		sh 'sleep 10'
-		sh 'curl 52.49.196.207:8080'
-		sh 'docker stop cowsay'
+                sh 'docker ps'  
        
 }
+}
+}
+    stage('Tsting'){
+     steps {
+	sh 'curl http://52.49.196.207:8080'
 }
 }
 }
