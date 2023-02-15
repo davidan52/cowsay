@@ -44,7 +44,7 @@ pipeline {
 }
     stage('Testing'){
      steps {
-	sh 'curl http://52.49.196.207:3010'
+	sh 'curl http://52.49.196.207:${PORT}'
 }
 }
 }
